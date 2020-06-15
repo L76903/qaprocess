@@ -1,0 +1,36 @@
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+spring:
+  datasource:
+    url: jdbc:h2:file:./data/flie_upload
+    driver-class-name: org.h2.Driver
+    username: root
+    password: 123456
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  application:
+    name: upload
+  servlet:
+    multipart:
+      #开启上传
+      enabled: true
+      #硬盘写入阀值
+      file-size-threshold: 2KB
+      #最大的文件大小
+      max-file-size: 200MB
+      # 最大请求大小
+      max-request-size: 215MB
+#自定义属性文件存放路径
+file:
+  upload-dir: ./uploads
+my:
+  server:
+    port-scope: 6000-7000
