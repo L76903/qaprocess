@@ -25,6 +25,7 @@ import java.util.Date;
 import java.util.Optional;
 import java.util.UUID;
 
+@SuppressWarnings("ALL")
 @Slf4j
 @Service("StorageService")
 public class StorageServiceImpl implements IStorageService {
