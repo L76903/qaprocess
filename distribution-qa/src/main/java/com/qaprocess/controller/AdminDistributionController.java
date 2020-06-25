@@ -1,19 +1,11 @@
 package com.qaprocess.controller;
 
-import com.qaprocess.vo.ResponseResult;
 import org.springframework.web.bind.annotation.*;
 
-@RestController(value = "/admin")
+@RestController
+@RequestMapping(value = "/admin")
 public class AdminDistributionController {
-    /**
-     *获取问卷的全部信息
-     * @param id 试卷ID
-     * @return
-     */
-    @GetMapping(value = "/qa/{id}")
-    public ResponseResult getQA(@PathVariable("id") String id){
-        return new ResponseResult();
-    }
+
 
     /**
      * 修改问卷
@@ -21,8 +13,8 @@ public class AdminDistributionController {
      * @return
      */
     @PostMapping(value = "/qa/{id}")
-    public ResponseResult setQA(@PathVariable("id") String id){
-        return new ResponseResult();
+    public Object setQA(@PathVariable("id") String id){
+        return new Object();
     }
 
     /**
@@ -30,20 +22,20 @@ public class AdminDistributionController {
      * @return
      */
     @PostMapping(value = "/qa")
-    public ResponseResult addQA(){
-        return new ResponseResult();
+    public Object addQA(){
+        return new Object();
     }
 
     /**
-     *启动或删除问卷
+     *启动或删除问卷,获取问卷的全部信息
      * @param id 试卷ID
      * @param status 0为启用，1为删除
      * @return
      */
     @GetMapping(value = "/qa/{id}")
-    public ResponseResult delQA(@PathVariable("id") String id,@RequestParam(value = "status",required = true) int status){
-        return new ResponseResult();
-
+    public Object delQA(@PathVariable("id") String id
+            ,@RequestParam(value = "status",required = false,defaultValue = "0") int status){
+        return new Object();
     }
 
 }

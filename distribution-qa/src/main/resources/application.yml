@@ -9,4 +9,4 @@ spring:
     name: distrbution-qa
 my:
   server:
-    port-scope: 6000-7000
+    port-scope: 9100-9300

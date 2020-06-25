@@ -8,7 +8,8 @@ import java.sql.Timestamp;
 
 import com.qaprocess.dao.TfilesDao;
 import com.qaprocess.entity.TfilesEntity;
-import com.qaprocess.exception.MyException;
+import com.qaprocess.resultful.MyException;
+import com.qaprocess.resultful.ResultCode;
 import com.qaprocess.service.IStorageService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
@@ -41,7 +42,7 @@ public class StorageServiceImpl implements IStorageService {
         if (!StringUtils.isNotBlank(file.getOriginalFilename())){
             //空文件
             log.warn("接收到空文件");
-            throw new MyException(MyException.ResponseCodeEnum.IO_ERROR,"接收到空文件");
+            throw new MyException(ResultCode.IO_ERROR,"接收到空文件");
         }
             //获取原始文件名
             String oldFileName = file.getOriginalFilename();
@@ -95,18 +96,18 @@ public class StorageServiceImpl implements IStorageService {
     public void delete(Long id) throws MyException {
         Optional<TfilesEntity> tfilesEntityOptional = tfilesDao.findById(id);
         if (!tfilesEntityOptional.isPresent()){
-            throw new MyException(MyException.ResponseCodeEnum.IO_ERROR);
+            throw new MyException(ResultCode.IO_ERROR);
         }
         TfilesEntity tfilesEntity =tfilesEntityOptional.get();
         //删除文件
         //String realpath = ResourceUtils.getURL("classpath:").getPath() + "/static" + tfilesEntity.getPath();
         File file = new File(UPLOADED_FOLDER+"/"+tfilesEntity.getPath(), tfilesEntity.getNewFileName());
         if (!file.exists()){
-            throw new MyException(MyException.ResponseCodeEnum.IO_ERROR);
+            throw new MyException(ResultCode.IO_ERROR);
         }
         //立即删除
         if (file.delete()){
-            throw new MyException(MyException.ResponseCodeEnum.IO_ERROR);
+            throw new MyException(ResultCode.IO_ERROR);
         }
         tfilesDao.deleteById(id);//删除数据库中的内容
     }
@@ -117,7 +118,7 @@ public class StorageServiceImpl implements IStorageService {
         Optional<TfilesEntity> tfilesEntityOptional=tfilesDao.findById(id);
         if (!tfilesEntityOptional.isPresent()){
             //没有在数据库中查到该文件
-            throw new MyException(MyException.ResponseCodeEnum.DATA_MISSION,"该文件不存在");
+            throw new MyException(ResultCode.DATA_MISSION,"该文件不存在");
         }
         TfilesEntity tfilesEntity =tfilesEntityOptional.get();
         File file = new File(UPLOADED_FOLDER+"/"+tfilesEntity.getPath(), tfilesEntity.getNewFileName());
@@ -132,7 +133,7 @@ public class StorageServiceImpl implements IStorageService {
     public TfilesEntity fileInfo(Long id) throws MyException {
         Optional<TfilesEntity> tfilesEntityOptional = tfilesDao.findById(id);
         if (!tfilesEntityOptional.isPresent()){
-            throw new MyException(MyException.ResponseCodeEnum.DATA_MISSION,"该文件不存在");
+            throw new MyException(ResultCode.DATA_MISSION,"该文件不存在");
         }
         return tfilesEntityOptional.get();
     }

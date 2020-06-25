@@ -1,0 +1,25 @@
+# Created by .ignore support plugin (hsz.mobi)
+auth-server/src/test/
+auth-server/target/
+data/flie_upload.mv.db
+distribution-qa/src/main/java/com/qaprocess/vo/
+distribution-qa/src/test/
+distribution-qa/target/classes/META-INF/
+distribution-qa/target/classes/com/qaprocess/controller/
+distribution-qa/target/classes/com/qaprocess/resultful/
+distribution-qa/target/classes/com/qaprocess/utils/
+distribution-qa/target/generated-sources/
+eureka-server/src/test/
+eureka-server/target/classes/META-INF/
+eureka-server/target/classes/com/qaprocess/resultful/
+eureka-server/target/generated-sources/
+file-upload/src/test/
+file-upload/target/classes/META-INF/file-upload.kotlin_module
+file-upload/target/classes/com/qaprocess/resultful/
+file-upload/target/generated-sources/
+file-upload/target/maven-status/
+spring-gateway/src/test/
+spring-gateway/target/classes/
+spring-gateway/target/generated-sources/
+src/
+uploads/

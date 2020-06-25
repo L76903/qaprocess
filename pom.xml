@@ -4,15 +4,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+
     <groupId>qaprocess</groupId>
     <artifactId>qaprocess</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>eureka-server</module>
-        <module>spring-gateway</module>
         <module>file-upload</module>
         <module>distribution-qa</module>
+        <module>auth-server</module>
+        <module>spring-gateway</module>
     </modules>
 
 
@@ -50,6 +52,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-log4j2</artifactId>
         </dependency>
+
         <!--使用log4j2的AsyncLogger时需要包含disruptor -->
         <!-- https://mvnrepository.com/artifact/com.lmax/disruptor -->
         <dependency>
@@ -78,6 +81,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
             <version>${spring-boot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
         </dependency>
 <!--        非常好用的工具用于自动生成get和set方法-->
         <dependency>
@@ -127,6 +135,11 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <!--fork:如果没有该项配置,整个devtools不会起作用-->
+                    <fork>true</fork>
+                </configuration>
+
             </plugin>
         </plugins>
     </build>

@@ -1,7 +1,7 @@
 package com.qaprocess.service;
 
 import com.qaprocess.entity.TfilesEntity;
-import com.qaprocess.exception.MyException;
+import com.qaprocess.resultful.MyException;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.FileInputStream;

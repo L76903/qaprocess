@@ -45,6 +45,7 @@ public class TomcatConfig {
                         throw new IllegalArgumentException("no available port !");
                     } else {
                         connector.setPort(port);
+                        System.setProperty("server.port",String.valueOf(port));
                     }
                 }
                 //一些调优参数，别处抄来的
@@ -81,6 +82,7 @@ class ConnectorUtil {
         Socket s = new Socket();
         s.bind(new InetSocketAddress(host, port));
         s.close();
+
     }
     public boolean isPortAvailable(int port) {
         Socket s = new Socket();

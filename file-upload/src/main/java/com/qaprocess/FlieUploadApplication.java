@@ -24,13 +24,17 @@ import java.util.Random;
 @Slf4j
 @SpringBootApplication
 public class FlieUploadApplication {
-
-
-
+//    private static int i;
     public static void main(String[] args) {
-        SpringApplication.run(FlieUploadApplication.class,args);
-
-
+//        try {
+            SpringApplication.run(FlieUploadApplication.class,args);
+/*        }catch (Exception e){
+            if (i<10){
+                log.error(e.getMessage());
+                i++;
+                main(args);
+            }
+        }*/
     }
 
 }

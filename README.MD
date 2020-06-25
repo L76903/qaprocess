@@ -1,12 +1,12 @@
 # 目录说明
 
-| 目录            | 说明               |
-| --------------- | ------------------ |
-| eureka-server   | 注册中心           |
-| file-upload     | 文件上传和下载     |
-| spring-gateway  | 网关               |
-|                 | 登陆服务用于查询ID |
-| distribution-qa | 题目分配中心       |
+| 目录            | 说明                                  |
+| --------------- | ------------------------------------- |
+| eureka-server   | 注册中心                              |
+| file-upload     | 文件上传和下载                        |
+| spring-gateway  | 网关                                  |
+| auth-service    | 用于Authorization权限认证及内部ID转换 |
+| distribution-qa | 题目分配中心                          |
 
 # 统一响应报文
 

@@ -40,6 +40,7 @@ public class TomcatConfig {
                         throw new IllegalArgumentException("no available port !");
                     } else {
                         connector.setPort(port);
+                        System.setProperty("server.port",String.valueOf(port));
                     }
                 }
                 //一些调优参数，别处抄来的

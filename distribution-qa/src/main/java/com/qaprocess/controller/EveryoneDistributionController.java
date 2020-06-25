@@ -1,22 +1,20 @@
 package com.qaprocess.controller;
 
-import com.qaprocess.vo.ResponseResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.web.bind.annotation.*;
 
-@RestController(value = "/everyone")
+@RestController
+@RequestMapping(value = "/everyone")
 public class EveryoneDistributionController {
 
     @GetMapping("/qa/{id}")
-    public ResponseResult getQA(@PathVariable("id") String id){
-        return new ResponseResult();
+    public Object getQA(@PathVariable("id") String id){
+        return new Object();
     }
 
     @PostMapping("/qa/{id}")
-    public ResponseResult setQA(@PathVariable("id") String id){
-        return new ResponseResult();
+    public Object setQA(@PathVariable("id") String id){
+        return new Object();
     }
 
 }

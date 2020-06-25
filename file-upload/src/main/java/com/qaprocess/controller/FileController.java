@@ -1,11 +1,9 @@
 package com.qaprocess.controller;
 
 import com.qaprocess.entity.TfilesEntity;
-import com.qaprocess.exception.MyException;
+import com.qaprocess.resultful.MyException;
 import com.qaprocess.service.IStorageService;
 import com.qaprocess.vo.FileInfoVo;
-import com.qaprocess.vo.ResponseResult;
-import ma.glasnost.orika.MapperFactory;
 import ma.glasnost.orika.impl.DefaultMapperFactory;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,31 +18,32 @@ import java.io.IOException;
 import java.net.URLEncoder;
 
 @RestController
+@com.qaprocess.resultful.ResponseResult
 public class FileController {
     @Autowired
     IStorageService storageService;
     @GetMapping("/")
-    public String index() {
-        return "upload";
+    public String index() throws Exception {
+        return "my";
     }
 
     @PostMapping("/upload") // //new annotation since 4.3
-    public ResponseResult singleFileUpload(@RequestParam("file") MultipartFile file) throws IOException, MyException {
+    public FileInfoVo singleFileUpload(@RequestParam("file") MultipartFile file) throws IOException, MyException {
         TfilesEntity tfilesEntity=storageService.store(file);
 
        return fileInfo(tfilesEntity.getId());
 
-        //return new ResponseResult(FileInfoVo.valueOf(storageService.store(file)));
+        //return new ResultVo(FileInfoVo.valueOf(storageService.store(file)));
     }
 
 
     @GetMapping("/file_info")
-    public ResponseResult fileInfo(@Param("id") Long id) throws MyException {
+    public FileInfoVo fileInfo(@Param("id") Long id) throws MyException {
         TfilesEntity tfilesEntity=storageService.fileInfo(id);
         FileInfoVo fileInfoVo=new DefaultMapperFactory.Builder().build().getMapperFacade().map(tfilesEntity, FileInfoVo.class);
         fileInfoVo.setFileName(tfilesEntity.getOldFileName());
         fileInfoVo.setUploadTime(tfilesEntity.getUploadTime());
-        return new ResponseResult(fileInfoVo);
+        return fileInfoVo;
     }
 
     /**

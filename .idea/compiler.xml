@@ -7,16 +7,23 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="eurekaserver" />
-        <module name="springgateway" />
+        <module name="eureka-server" />
+        <module name="distribution-qa" />
         <module name="fileupload" />
+        <module name="springgateway" />
         <module name="distributionqa" />
+        <module name="authserver" />
+        <module name="auth-server" />
+        <module name="eurekaserver" />
+        <module name="file-upload" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="authservice" target="6" />
       <module name="gateway" target="1.5" />
       <module name="login" target="1.5" />
       <module name="qadistribution" target="1.5" />
+      <module name="spring-gateway" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>
